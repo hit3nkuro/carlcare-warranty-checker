@@ -16,7 +16,7 @@ function checkWarranty() {
 	imeiArray = imeiArray.filter((temp) => imeiRegExp.test(temp));
 
 
-	imeiArray.forEach((imei) => {		
+	imeiArray.forEach( async (imei) => {		
 		if ($('tr#'+imei).length == 0) {
 			let dataString = { "shortName" : "ru", "imei" : imei};
 			postData(apiUrl, dataString).then((data) => createRow(dataProcessing(data)));

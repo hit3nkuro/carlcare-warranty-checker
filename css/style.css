@@ -1,0 +1,27 @@
+:root {
+	--dark-blue: #4F7F8F;
+	--light-blue: #96D5EB;
+	--blue: #57A3BD;
+	--dark-sand: #DBCEC1;
+	--sand: #F7F6F5;
+}
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+/*Приклеиваем футер к низу*/
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+footer {
+	margin-top: auto;
+}
+main {
+	flex-grow: 1;
+}

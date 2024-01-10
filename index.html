@@ -3,39 +3,48 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css\simple-grid.css">
+	<link rel="stylesheet" href="css\style.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 </head>
 <body>
-<div class="container">	
-	<div class="warranty-check-form">
-		<textarea id="warranty-check-textarea"></textarea>
-		<button id="warranty-check-button">Проверить</button>
-	</div>
-	<div class="result-table">
-		<table>
-			<colgroup>
-				<col span="1" style="width:40%">
-				<col span="1" style="width:20%">
-				<col span="1" style="width:20%">
-				<col span="1" style="width:20%">
-			</colgroup>
-			<thead>
-				<tr>
-					<th>IMEI</th>
-					<th>Статус гарантии</th>
-					<th>Дата активации</th>
-					<th>Гарантия до</th>
-				</tr>
-				<tr class="filler"></tr>
-			</thead>
-			<tbody id="warranty-check-result">
-				
-			</tbody>
-		</table>
-	</div>
-</div>
+	<header>
+		
+	</header>
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-3">
+					<div class="warranty-check-form">
+						<textarea id="warranty-check-textarea"></textarea>
+						<button id="warranty-check-button">Проверить</button>
+					</div>
+				</div>
+				<div class="col-9">
+					<div class="result-table">
+						<table>
+							<thead>
+								<tr>
+									<th>IMEI</th>
+									<th>Статус гарантии</th>
+									<th>Дата активации</th>
+									<th>Гарантия до</th>
+								</tr>
+								<tr class="filler"></tr>
+							</thead>
+							<tbody id="warranty-check-result">
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		
+	</footer>
 </body>
 </html>
