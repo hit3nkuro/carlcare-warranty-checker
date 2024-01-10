@@ -1,9 +1,7 @@
 :root {
-	--dark-blue: #4F7F8F;
-	--light-blue: #96D5EB;
-	--blue: #57A3BD;
-	--dark-sand: #DBCEC1;
-	--sand: #F7F6F5;
+	--body-background: #eaebef;
+	--header-background: #fff;
+
 }
 
 * {
@@ -24,4 +22,67 @@ footer {
 }
 main {
 	flex-grow: 1;
+}
+
+/*Полоса прокрутки*/
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+*::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+*::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: rgba(0,0,0,0.1);
+}
+*::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-thumb:hover{
+	background: rgba(0,0,0,0.4);
+}
+*::-webkit-scrollbar-thumb:active{
+	background: rgba(0,0,0,.9);
+}
+body {
+	background-color: var(--body-background);
+}
+/*Шапка*/
+header {
+	margin-bottom:50px;
+	background-color: var(--header-background);
+	padding: 10px 0;
+}
+/*Форма ввода*/
+.warranty-check-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#warranty-check-textarea {
+	height: 60vh;
+	width: 100%;
+	flex-grow: 1;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	overflow-y: scroll;
+    resize: none;   
+    box-shadow: 0px 0px 10px 0px #E0E0E0;
+    padding: 5px;
+}
+#warranty-check-button {
+	width: 100%;
+	height: 30px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+/*Таблица*/
+table {
+	width: 100%;
 }
