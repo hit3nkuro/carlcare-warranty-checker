@@ -39,6 +39,8 @@ function dataProcessing(jsonData) {
 	switch(jsonData.result.status) {
 		case 2:
 			warrantyStatus = 'Не активирован';
+			activationDate = '';
+			warrantyExpirationDate='';
 			break;
 		case 3:
 			warrantyExpirationDate = (new Date(jsonData.result.warrantyDuration)).toISOString().slice(0,10);
