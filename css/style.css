@@ -1,7 +1,14 @@
 :root {
 	--body-background: #eaebef;
 	--header-background: #fff;
+	--shadow: #c0c0c0;
 
+	--color-white: #fdfdfe;
+	--color-gray: #dad8db;
+	--color-dark-gray: #494644;
+	--color-black: #0d1517;
+	--color-orange: #f25926;
+	--color-yellow: #ffcd89;
 }
 
 * {
@@ -73,7 +80,7 @@ header {
 	border-radius: 5px;
 	overflow-y: scroll;
     resize: none;   
-    box-shadow: 0px 0px 10px 0px #E0E0E0;
+    box-shadow: 0px 0px 10px 0px var(--shadow);
     padding: 5px;
 }
 #warranty-check-button {
@@ -84,16 +91,41 @@ header {
 }
 
 /*Таблица*/
-.result-table {
-	width: 100%;
+.warranty-check-table {
 	height: 60vh;
 	overflow-y: scroll;
 }
-	#result-table {
-		width: 100%;
-		text-align: left;
-	}
-		#result-table thead {
-			position: sticky;
-			top: 0;
-		}
+.warranty-check-table table {
+	width: 100%;
+	text-align: left;
+	border-spacing: 0;
+}
+.warranty-check-table thead {
+	position: sticky;
+	top: 0;
+	margin-bottom: 20px;
+}
+.warranty-check-table th {
+	padding: 15px 0;
+	padding-left: 15px;
+	background: var(--color-white);
+	color: var(--color-black);
+}
+
+th.imei {
+	width: 25%
+}
+th.status {
+	width: 25%;
+}
+th.active-date {
+	width: 25%;
+}
+th.warranty-date {
+	width: 25%;
+}
+
+.warranty-check-table td {
+	border: none;
+	padding-left: 15px;
+}

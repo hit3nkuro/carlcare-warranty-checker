@@ -1,4 +1,4 @@
-const resultTableBodySelector = "#warranty-check-result";
+const resultTableBodySelector = "#warranty-result";
 const textAreaSelector = "#warranty-check-textarea";
 const buttonSelector = "#warranty-check-button";
 
