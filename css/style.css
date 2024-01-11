@@ -1,6 +1,4 @@
 :root {
-	--body-background: #eaebef;
-	--header-background: #fff;
 	--shadow: #c0c0c0;
 
 	--color-white: #fdfdfe;
@@ -9,12 +7,15 @@
 	--color-black: #0d1517;
 	--color-orange: #f25926;
 	--color-yellow: #ffcd89;
+	--color-blue: #00678a;
+	--color-dark-blue: #063d55;
 }
 
 * {
 	margin:0;
 	padding:0;
 	box-sizing:border-box;
+	font-family: "Roboto", sans-serif;
 }
 
 /*Приклеиваем футер к низу*/
@@ -56,13 +57,18 @@ main {
 	background: rgba(0,0,0,.9);
 }
 body {
-	background-color: var(--body-background);
+	background-color: var(--color-white);
 }
 /*Шапка*/
 header {
 	margin-bottom:50px;
-	background-color: var(--header-background);
-	padding: 10px 0;
+	background-color: var(--color-white);
+	box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.header-title {
+	font-style: normal;
+	font-weight: 900;
+	font-size: 1.2em;
 }
 /*Форма ввода*/
 .warranty-check-form {
@@ -77,39 +83,54 @@ header {
 	width: 100%;
 	flex-grow: 1;
 	margin-bottom: 15px;
-	border-radius: 5px;
-	overflow-y: scroll;
-    resize: none;   
-    box-shadow: 0px 0px 10px 0px var(--shadow);
-    padding: 5px;
+	overflow-y: auto;
+	border-radius: 0;
+	resize: none;
+	padding: 5px;
+box-shadow: 1px 1px 10px var(--color-gray);
 }
 #warranty-check-button {
 	width: 100%;
-	height: 30px;
+	height: 40px;
 	cursor: pointer;
-	border-radius: 5px;
+	font-style: normal;
+	font-size: medium;
+	font-weight: 700;
+	background-color: var(--color-white);
+	color: var(--color-dark-gray);
+	border: 1px solid var(--color-dark-gray);
+	box-shadow: 1px 1px 10px var(--color-gray);
+}
+
+#warranty-check-button:hover {
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	border: 3px solid var(--color-blue);
 }
 
 /*Таблица*/
-.warranty-check-table {
+.warranty-check-result-table {
 	height: 60vh;
-	overflow-y: scroll;
+	overflow: overlay;
+	scrollbar-gutter: stable;
+	box-shadow: 1px 1px 10px var(--color-gray);
 }
-.warranty-check-table table {
+.warranty-check-result-table table {
 	width: 100%;
 	text-align: left;
 	border-spacing: 0;
 }
-.warranty-check-table thead {
+.warranty-check-result-table thead {
 	position: sticky;
 	top: 0;
 	margin-bottom: 20px;
 }
-.warranty-check-table th {
+.warranty-check-result-table th {
 	padding: 15px 0;
 	padding-left: 15px;
-	background: var(--color-white);
-	color: var(--color-black);
+	background: var(--color-blue);
+	color: var(--color-white);
+	white-space: nowrap;
 }
 
 th.imei {
@@ -125,7 +146,8 @@ th.warranty-date {
 	width: 25%;
 }
 
-.warranty-check-table td {
+.warranty-check-result-table td {
 	border: none;
 	padding-left: 15px;
+	padding: 5px 0 5px 15px;
 }
