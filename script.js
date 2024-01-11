@@ -15,11 +15,12 @@ function checkWarranty() {
 	let imeiArray = $(textAreaSelector).val().split('\n');
 	imeiArray = imeiArray.filter((temp) => imeiRegExp.test(temp));
 
-
 	imeiArray.forEach( async (imei) => {		
 		if ($('tr#'+imei).length == 0) {
 			let dataString = { "shortName" : "ru", "imei" : imei};
-			postData(apiUrl, dataString).then((data) => createRow(dataProcessing(data)));
+			postData(apiUrl, dataString).then((data) => {
+				createRow(dataProcessing(data))
+			});
 		}		
 	});
 }
