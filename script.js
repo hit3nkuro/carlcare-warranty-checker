@@ -2,8 +2,9 @@ const resultTableBodySelector = "#warranty-result";
 const textAreaSelector = "#warranty-check-textarea";
 const buttonSelector = "#warranty-check-button";
 
-const imeiRegExp = new RegExp("[0-9]{15}");
+//const imeiRegExp = new RegExp("[0-9]{15}");
 const apiUrl = 'https://java-api.carlcare.com/warranty/check';
+const TRY_COUNT = 3;
 
 $(document).ready(function(e) {
 	$(buttonSelector).on('click', function() {
@@ -13,20 +14,40 @@ $(document).ready(function(e) {
 
 function checkWarranty() {
 	let imeiArray = $(textAreaSelector).val().split('\n');
-	imeiArray = imeiArray.filter((temp) => imeiRegExp.test(temp));
+	//imeiArray = imeiArray.filter((temp) => imeiRegExp.test(temp));
 
-	imeiArray.forEach( async (imei) => {		
+	imeiArray.forEach((imei) => {		
 		if ($('tr#'+imei).length == 0) {
 			let dataString = { "shortName" : "ru", "imei" : imei};
-			postData(apiUrl, dataString).then((data) => {
-				createRow(dataProcessing(data))
-			});
+			testRetryRequest(apiUrl, dataString, TRY_COUNT);
 		}		
 	});
 }
 
+function testRetryRequest(apiUrl, dataString, tryCount) {
+	postData(apiUrl, dataString).then((data) => {
+		const temp = dataProcessing(data);
+		if (temp==null)
+		{
+			if (tryCount>1)
+				testRetryRequest(apiUrl, dataString, tryCount-1);
+			else
+				console.log(dataString);
+				return;
+		}
+		else
+		{
+			createRow(temp);
+		}
+	});
+}
+
 function dataProcessing(jsonData) {
-	console.log(jsonData);
+	if (!(jsonData.message === "success"))
+	{
+		console.log(jsonData);
+		return;
+	}
 	let imei;
 	let currentDate;
 	let activationDate;
@@ -65,7 +86,8 @@ function createRow(arrayData) {
 }
 
 async function postData(url='', data={}) {
-	const response = await fetch(url,{
+
+	let response = await fetch(url, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -86,7 +108,7 @@ async function postData(url='', data={}) {
 		},
 		redirect: 'follow',
 		reffererPolicy: 'strict-origin-when-cross-origin',
-		body: JSON.stringify(data)
+		body: JSON.stringify(data),
 	});
 	return response.json();
 }

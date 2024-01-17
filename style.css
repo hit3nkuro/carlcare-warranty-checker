@@ -1,0 +1,138 @@
+
+
+:root {
+	--dark-blue: #4F7F8F;
+	--light-blue: #96D5EB;
+	--blue: #57A3BD;
+	--dark-sand: #DBCEC1;
+	--sand: #F7F6F5;
+}
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+
+*::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: rgba(0,0,0,0.1);
+}
+*::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background: rgba(0,0,0,0.2);
+}
+*::-webkit-scrollbar-thumb:hover{
+	background: rgba(0,0,0,0.4);
+}
+*::-webkit-scrollbar-thumb:active{
+	background: rgba(0,0,0,.9);
+}
+
+
+
+
+
+html {
+	width:100%;
+	height:100%;	
+}
+body {
+	background: var(--dark-blue);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	width: 960px;
+	height: 400px;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	background: var(--sand);
+	padding: 20px;
+}
+
+
+.warranty-check-form {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	margin-right: 50px;
+	align-items: center;
+}
+
+#warranty-check-textarea {
+	transition: .1s all ease-in;
+	width:100%;
+	flex-grow: 1;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	background: var(--sand);
+    border:none;
+    overflow-y:scroll;
+    resize:none;   
+    border: 3px solid var(--sand);
+    box-shadow: 0px 0px 10px 0px #E0E0E0;
+    padding: 5px;
+}
+
+#warranty-check-textarea:focus { 
+    outline: none !important;
+    border: 3px solid var(--dark-sand);
+    
+ }
+
+#warranty-check-button {
+	transition: .1s all ease-in;
+	width:100%;
+	height: 30px;
+	background: var(--sand);
+	border: 3px solid var(--dark-sand);
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px 0px #E0E0E0;
+}
+
+#warranty-check-button:hover {
+	background: var(--dark-sand);
+	color:var(--sand);
+}
+
+.result-table {
+	flex-grow:1;
+	overflow-y:scroll;
+}
+
+.result-table>table {
+	width: 100%;
+	height: 100%;
+	border-spacing: 0;
+	text-align: left;
+}
+
+.result-table>table>thead {
+	position: sticky;
+	top: 0;
+}
+
+th {
+	padding: 5px 0;
+	background: var(--dark-sand);
+}
+td, th {
+	padding-left:10px;
+}
+.filler {
+	height: 10px;
+}
