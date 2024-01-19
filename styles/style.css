@@ -1,0 +1,162 @@
+:root {
+	--color-white: #fdfdfe;
+	--color-gray: #dad8db;
+	--color-dark-gray: #494644;
+	--color-black: #0d1517;
+	--color-blue: #00678a;
+	--color-dark-blue: #063d55;
+}
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	font-family: "Roboto", sans-serif;
+}
+
+/*Приклеиваем футер к низу*/
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+footer {
+	margin-top: auto;
+}
+main {
+	flex-grow: 1;
+}
+
+/*Полоса прокрутки*/
+* {
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+*::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	margin-left: 15px;
+}
+*::-webkit-scrollbar-track {
+	background: var(--color-gray);
+}
+*::-webkit-scrollbar-thumb{
+	background: var(--color-blue);
+}
+*::-webkit-scrollbar-thumb:hover{
+	background: var(--color-dark-blue);
+}
+*::-webkit-scrollbar-thumb:active{
+	background: var(--color-black);
+}
+body {
+	background-color: var(--color-white);
+}
+/*Шапка*/
+header {
+	margin-bottom:50px;
+	background-color: var(--color-blue);
+	box-shadow: 0px 5px 8px 0px var(--color-gray);
+	padding: 10px 0;
+}
+.header-title {
+	font-style: normal;
+	font-weight: 900;
+	font-size: x-large;
+	color: var(--color-white);
+}
+/*Форма ввода*/
+.warranty-check-form {
+	width: 100%;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#warranty-check-textarea {
+	height: 100%;
+	width: 100%;
+	flex-grow: 1;
+	margin-bottom: 15px;
+	overflow-y: scroll;
+	resize: none;
+	padding: 5px;
+	box-shadow: 0px 0px 15px var(--color-gray);
+	border: none;
+}
+#warranty-check-textarea:focus {
+	outline: none;
+	border: 1px solid var(--color-gray);
+}
+#warranty-check-button {
+	border: none;
+	width: 100%;
+	height: 40px;
+	cursor: pointer;
+	font-style: normal;
+	font-size: medium;
+	font-weight: 700;
+	background-color: var(--color-white);
+	transition: .2s;
+	color: var(--color-dark-gray);
+	box-shadow: 0px 0px 15px var(--color-gray);
+}
+
+#warranty-check-button:hover {
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	border: none;
+}
+
+#warranty-check-button:focus {
+	
+}
+
+/*Таблица*/
+.warranty-check-result-table {
+	height: 60vh;
+	overflow-y: scroll;
+	overflow-x: auto;
+	box-shadow: 0px 0px 15px var(--color-gray);
+}
+.warranty-check-result-table table {
+	width: 100%;
+	text-align: left;
+	border-spacing: 0;
+}
+.warranty-check-result-table thead {
+	position: sticky;
+	top: 0;
+	margin-bottom: 20px;
+}
+.warranty-check-result-table th {
+	padding: 15px 0;
+	padding-left: 15px;
+	background: var(--color-blue);
+	color: var(--color-white);
+	white-space: nowrap;
+	font-style: normal;
+	font-size: medium;
+	font-weight: 700;
+}
+
+th.imei {
+	width: 25%
+}
+th.status {
+	width: 25%;
+}
+th.active-date {
+	width: 25%;
+}
+th.warranty-date {
+	width: 25%;
+}
+
+.warranty-check-result-table td {
+	border: none;
+	padding-left: 15px;
+	padding: 5px 0 5px 15px;
+}
