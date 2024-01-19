@@ -77,8 +77,7 @@ function tryRequest(dataString, tryCount) {
 }
 
 function insertRow(arrayData) {
-	let newRow = '<tr imei="'+arrayData[0]+'"><td>'+arrayData[0]+'</td><td>'+arrayData[1]+'</td><td>'+arrayData[2]+'</td><td>'+arrayData[3]+'</td></tr>';
-	$(TABLE_SELECTOR).append('<tr id="'+arrayData[0]+'"><td>'+arrayData[0]+'</td><td>'+arrayData[1]+'</td><td>'+arrayData[2]+'</td><td>'+arrayData[3]+'</td></tr>');
+	$(TABLE_SELECTOR).append(`<tr id="${arrayData[0]}"><td>${arrayData[0]}</td><td>${arrayData[1]}</td><td>${arrayData[2]}</td><td>${arrayData[3]}</td></tr>`);
 }
 
 
