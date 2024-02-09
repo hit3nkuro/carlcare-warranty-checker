@@ -34,7 +34,7 @@ function checkWarranty() {
 function processData(jsonData) {
 	//if ((jsonData==null)||(jsonData.message!='success')||(jsonData.result==null)) {
 	//JSON.stringify(jsonData)
-	if ((jsonData==null)||(jsonData.message!='success')||(jsonData.result==null)) {
+	if ((jsonData==null)||(JSON.stringify(jsonData.message)!='success')||(jsonData.result==null)) {
 		console.log('Ошибка. Запрос вернул следующий результат:\n'+JSON.stringify(jsonData));
 		return;
 	}
@@ -61,7 +61,7 @@ function processData(jsonData) {
 function tryRequest(dataString, tryCount) {
 	switch(tryCount) {
 	case 0:
-		console.error(`Не удалось проверить гарантию: ${dataString.imei}`);
+		console.error(`Не удалось проверить гарантию: ${dataString}`);
 		break;
 
 	default:
