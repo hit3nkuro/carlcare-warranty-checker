@@ -46,9 +46,8 @@ function processData(jsonData) {
 			break;
 		case 3:
 			let currentDate = (new Date()).toISOString().slice(0,10);
-			let activeDate = (new Date(jsonData.result.activeTime)).toISOString().slice(0,10);
+			let activeDate = (new Date(jsonData.result.activeTime.slice(0,10))).toISOString().slice(0,10);
 			let warrantyExpirationDate = (new Date(jsonData.result.warrantyDuration)).toISOString().slice(0,10);
-				console.log(jsonData.result.activeTime);
 			return new Array(IMEI, (warrantyExpirationDate < currentDate) ? 'Истекла' : 'Активна', activeDate, warrantyExpirationDate);
 			break;
 		default:
