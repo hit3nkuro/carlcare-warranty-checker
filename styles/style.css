@@ -157,6 +157,6 @@ th.warranty-date {
 
 .warranty-check-result-table td {
 	border: none;
-	padding-left: 15px;
 	padding: 5px 0 5px 15px;
+	font-size: 10px;
 }

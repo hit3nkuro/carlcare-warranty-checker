@@ -20,14 +20,27 @@ function checkWarranty() {
 	let imeiArray = $(TEXTAREA_SELECTOR).val().split('\n');
 	imeiArray = imeiArray.filter((temp) => IMEI_REGEXP.test(temp));
 	//console.log(imeiArray);
+	promiseArray = new Array();
 	imeiArray.forEach((imei) => {
 		if ($('tr#'+imei).length == 0) {
 			let dataString = { "shortName" : "ru", "imei" : imei};
-			tryRequest(dataString, TRY_COUNT);
+			promiseArray.push(createFetch(dataString));
 		}
 	});
-}
+	Promise.all(promiseArray).then((results) => {
+		if (results.length != imeiArray.length) {
+			console.log('Количество результатов меньше количества IMEI');
+		}
 
+		results.forEach((result) => {
+			const temp = processData(result);
+			if (temp!=null) {
+				insertRow(temp);
+			}
+		});
+
+	});
+}
 
 
 
@@ -51,7 +64,6 @@ function processData(jsonData) {
 			return new Array(IMEI, (warrantyExpirationDate < currentDate) ? 'Истекла' : 'Активна', activeDate, warrantyExpirationDate);
 			break;
 		default:
-			return;
 			break;
 		}
 	}
@@ -62,12 +74,12 @@ function processData(jsonData) {
 function tryRequest(dataString, tryCount) {
 	switch(tryCount) {
 	case 0:
-		console.error(`Не удалось проверить гарантию: ${dataString}`);
+		console.error(`Не удалось проверить гарантию: ${dataString.imei}`);
 		break;
 
 	default:
 		sendRequest(API_URL, dataString).then((data) => {
-			const temp = processData(data)
+			const temp = processData(data);
 			if (temp != null) {
 				insertRow(temp);
 			}
@@ -85,8 +97,8 @@ function insertRow(arrayData) {
 
 
 
-async function sendRequest(url='', data={}) {
-	let response = await fetch(url, {
+function createFetch(data = {}) {
+	return fetch(API_URL, {
 		method: 'POST',
 		mode: 'cors',
 		cache: 'no-cache',
@@ -108,6 +120,7 @@ async function sendRequest(url='', data={}) {
 		redirect: 'follow',
 		reffererPolicy: 'strict-origin-when-cross-origin',
 		body: JSON.stringify(data),
+	}).then((response) => {
+		return response.json();
 	});
-	return response.json();
 }
