@@ -5,6 +5,7 @@ const IMEI_REGEXP = new RegExp('[0-9]{15}');
 const TABLE_SELECTOR = '#warranty-result';
 const TEXTAREA_SELECTOR = '#warranty-check-textarea';
 const BUTTON_SELECTOR = '#warranty-check-button';
+const BLOCKER_SELECTOR = '#display-blocker';
 
 
 
@@ -17,6 +18,7 @@ $(document).ready(function(e) {
 
 
 function checkWarranty() {
+	$(BLOCKER_SELECTOR).css('display', 'flex');
 	let imeiArray = $(TEXTAREA_SELECTOR).val().split('\n');
 	imeiArray = imeiArray.filter((temp) => IMEI_REGEXP.test(temp));
 	//console.log(imeiArray);
@@ -38,6 +40,7 @@ function checkWarranty() {
 				insertRow(temp);
 			}
 		});
+		$(BLOCKER_SELECTOR).css('display', 'none');
 
 	});
 }

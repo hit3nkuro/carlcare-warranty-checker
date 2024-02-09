@@ -160,3 +160,30 @@ th.warranty-date {
 	padding: 5px 0 5px 15px;
 	font-size: 10px;
 }
+
+#display-blocker {
+	z-index: 99999;
+	background: var(--color-blue);
+	opacity: 50%;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+#display-blocker span {
+	color: var(--color-white);
+	font-size: xx-large;
+	font-weight: bolder;
+	clip-path: inset(0 1ch 0 0);
+	animation: l 1s steps(4) infinite;
+}
+
+@keyframes l {
+  to {
+    clip-path: inset(0 -1ch 0 0)
+  }
+}
