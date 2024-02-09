@@ -34,7 +34,7 @@ function checkWarranty() {
 function processData(jsonData) {
 	//if ((jsonData==null)||(jsonData.message!='success')||(jsonData.result==null)) {
 	//JSON.stringify(jsonData)
-	if ((jsonData==null)||(JSON.stringify(jsonData.message)!='success')||(jsonData.result==null)) {
+	if ((jsonData==null)||(jsonData.message!='success')||(jsonData.result==null)) {
 		console.log('Ошибка. Запрос вернул следующий результат:\n'+JSON.stringify(jsonData));
 		return;
 	}
