@@ -51,6 +51,7 @@ function processData(jsonData) {
 			return new Array(IMEI, (warrantyExpirationDate < currentDate) ? 'Истекла' : 'Активна', activeDate, warrantyExpirationDate);
 			break;
 		default:
+			return;
 			break;
 		}
 	}
